@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <ul id="myList">
+
+        </ul>
+    <script>
+
+        function showData(data) {
+            let myList = document.querySelector('#myList');
+            data.forEach(val => {
+                let myEl = document.createElement('li')
+                myEl.innerText = `Users : ${val.first_name} ${val.lastname}`;
+                myList.appendChild(myEl);
+            })
+        }
+
+        fetch('http://localhost:3000/posts')
+            .then(response => response.json())
+            .then(data => showData(data));
+    </script>
+
+</body>
+</html>
